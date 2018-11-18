@@ -14,8 +14,7 @@
 // @grant        GM_getResourceText
 // ==/UserScript==
 
-var jqueryUiCssText = GM_getResourceText ("jqueryUiCss");
-GM_addStyle (jqueryUiCssText);
+GM_addStyle(GM_getResourceText("jqueryUiCss"));
 // ==/UserScript==
 
 let mdUrl = 'http://localhost:4323/vendor-app-subapp/0-0/editor';
@@ -278,28 +277,7 @@ GM_addStyle(`
 
   var copyContent = "";
 
-  var copyToClipBoard = (content) => {
-      let textArea = document.createElement("textarea");
-      textArea.innerHTML = content;
-      document.body.appendChild(textArea);
 
-      let range,
-      selection;
-
-      if (navigator.userAgent.match(/ipad|iphone/i)) {
-          range = document.createRange();
-          range.selectNodeContents(textArea);
-          selection = window.getSelection();
-          selection.removeAllRanges();
-          selection.addRange(range);
-          textArea.setSelectionRange(0, 999999);
-      } else {
-          textArea.select();
-      }
-
-      document.execCommand('copy');
-      document.body.removeChild(textArea);
-  };
 
   var decodeSpecialChars = (input) => {
       var txt = document.createElement("textarea");
